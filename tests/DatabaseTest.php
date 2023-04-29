@@ -27,6 +27,7 @@ class DatabaseTest extends TestCase
 		return [
 			'SQLite' => ['sqlite::memory:', null, null],
 			'MySQL' => ["mysql:host=mysql;port=3306;dbname=$db", $user, $pass],
+			'PostgreSQL' => ["pgsql:host=postgres;port=5432;dbname=$db", $user, $pass],
 		];
 	}
 }
