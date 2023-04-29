@@ -40,9 +40,9 @@ class DatabaseTest extends TestCase
 		 */
 
 		return [
-			'SQLite' => ['sqlite::memory:', null, null],
-			'MySQL' => ["mysql:host=mysql;port=3306;dbname=$db", $user, $pass],
-			'PostgreSQL' => ["pgsql:host=postgres;port=5432;dbname=$db", $user, $pass],
+			'PDO_SQLITE' => ['sqlite::memory:', null, null],
+			'PDO_MYSQL' => ["mysql:host=mysql;port=3306;dbname=$db", $user, $pass],
+			'PDO_PGSQL' => ["pgsql:host=postgres;port=5432;dbname=$db", $user, $pass],
 		];
 	}
 }
