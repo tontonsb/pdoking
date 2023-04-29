@@ -20,8 +20,13 @@ class DatabaseTest extends TestCase
 
 	public static function databases():array
 	{
+		$db = getenv('DB_DATABASE');
+		$user = getenv('DB_USERNAME');
+		$pass = getenv('DB_PASSWORD');
+
 		return [
 			'SQLite' => ['sqlite::memory:', null, null],
+			'MySQL' => ["mysql:host=mysql;port=3306;dbname=$db", $user, $pass],
 		];
 	}
 }
