@@ -24,4 +24,7 @@ make install
 
 # Run tests
 make test
+
+# Rebuild the PHP image (after dockerfile changes)
+make build
 ```
