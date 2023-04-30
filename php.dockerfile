@@ -37,4 +37,10 @@ RUN set -eux; \
 	docker-php-ext-install pdo_dblib; \
 	docker-php-ext-enable pdo_dblib
 
+# odbc, unixodbc and msodbcsql18 deps are already installed, driver is ready in /etc/odbcinst.ini
+RUN set -eux; \
+	docker-php-ext-configure pdo_odbc --with-pdo-odbc=unixODBC,/usr; \
+	docker-php-ext-install pdo_odbc; \
+	docker-php-ext-enable pdo_odbc;
+
 WORKDIR /app

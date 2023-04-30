@@ -47,7 +47,7 @@ class DatabaseTest extends TestCase
 			// 'PDO_INFORMIX' => ["dblib:host=mssql;dbname=master", 'SA', $pass],
 			'PDO_MYSQL' => ["mysql:host=mysql;port=3306;dbname=$db", $user, $pass],
 			// 'PDO_OCI' => ["pgsql:host=postgres;port=5432;dbname=$db", $user, $pass],
-			// 'PDO_ODBC' => ["pgsql:host=postgres;port=5432;dbname=$db", $user, $pass],
+			'PDO_ODBC' => ["odbc:Driver=ODBC Driver 18 for SQL Server;Server=mssql;TrustServerCertificate=YES", 'SA', $pass],
 			'PDO_PGSQL' => ["pgsql:host=postgres;port=5432;dbname=$db", $user, $pass],
 			'PDO_SQLITE' => ['sqlite::memory:', null, null],
 			'PDO_SQLSRV' => ["sqlsrv:Server=mssql;Database=master;TrustServerCertificate=1", 'SA', $pass],
