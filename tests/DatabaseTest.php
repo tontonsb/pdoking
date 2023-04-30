@@ -40,11 +40,17 @@ class DatabaseTest extends TestCase
 		 */
 
 		return [
-			'PDO_SQLITE' => ['sqlite::memory:', null, null],
-			'PDO_MYSQL' => ["mysql:host=mysql;port=3306;dbname=$db", $user, $pass],
-			'PDO_PGSQL' => ["pgsql:host=postgres;port=5432;dbname=$db", $user, $pass],
-			'PDO_SQLSRV' => ["sqlsrv:Server=mssql;Database=master;TrustServerCertificate=1", 'SA', $pass],
+			// 'PDO_CUBRID' => ["dblib:host=mssql;dbname=master", 'SA', $pass],
 			'PDO_DBLIB' => ["dblib:host=mssql;dbname=master", 'SA', $pass],
+			// 'PDO_FIREBIRD' => ["dblib:host=mssql;dbname=master", 'SA', $pass],
+			// 'PDO_IBM' => ["dblib:host=mssql;dbname=master", 'SA', $pass],
+			// 'PDO_INFORMIX' => ["dblib:host=mssql;dbname=master", 'SA', $pass],
+			'PDO_MYSQL' => ["mysql:host=mysql;port=3306;dbname=$db", $user, $pass],
+			// 'PDO_OCI' => ["pgsql:host=postgres;port=5432;dbname=$db", $user, $pass],
+			// 'PDO_ODBC' => ["pgsql:host=postgres;port=5432;dbname=$db", $user, $pass],
+			'PDO_PGSQL' => ["pgsql:host=postgres;port=5432;dbname=$db", $user, $pass],
+			'PDO_SQLITE' => ['sqlite::memory:', null, null],
+			'PDO_SQLSRV' => ["sqlsrv:Server=mssql;Database=master;TrustServerCertificate=1", 'SA', $pass],
 		];
 	}
 }
