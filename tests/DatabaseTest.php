@@ -12,7 +12,13 @@ class DatabaseTest extends TestCase
 			PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_COLUMN,
 		]);
 
-		$statement = $pdo->prepare('select 1+1');
+		$sql = 'select 1+1';
+
+		// Oracle can't select without FROM, use the special table
+		if('oci' === $pdo->getAttribute(PDO::ATTR_DRIVER_NAME))
+			$sql .= ' from dual';
+
+		$statement = $pdo->prepare($sql);
 		$statement->execute();
 
 		$this->assertEquals(2, $statement->fetch());
@@ -46,7 +52,11 @@ class DatabaseTest extends TestCase
 			// 'PDO_IBM' => ["dblib:host=mssql;dbname=master", 'SA', $pass],
 			// 'PDO_INFORMIX' => ["dblib:host=mssql;dbname=master", 'SA', $pass],
 			'PDO_MYSQL' => ["mysql:host=mysql;port=3306;dbname=$db", $user, $pass],
-			// 'PDO_OCI' => ["pgsql:host=postgres;port=5432;dbname=$db", $user, $pass],
+			'PDO_OCI' => [
+				"oci:dbname=(DESCRIPTION =
+					(ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = oracle)(PORT = 1521)))
+					(CONNECT_DATA = (SERVICE_NAME = XEPDB1)))
+				", $user, $pass],
 			'PDO_ODBC' => ["odbc:Driver=ODBC Driver 18 for SQL Server;Server=mssql;TrustServerCertificate=YES", 'SA', $pass],
 			'PDO_PGSQL' => ["pgsql:host=postgres;port=5432;dbname=$db", $user, $pass],
 			'PDO_SQLITE' => ['sqlite::memory:', null, null],

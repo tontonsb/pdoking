@@ -43,4 +43,24 @@ RUN set -eux; \
 	docker-php-ext-install pdo_odbc; \
 	docker-php-ext-enable pdo_odbc;
 
+# oci
+RUN set -eux; \
+	apt-get update; \
+    apt-get -y --no-install-recommends install \
+		wget \
+		unzip \
+		libaio1; \
+	mkdir -p /opt/oracle; \
+	cd /opt/oracle; \
+	wget https://download.oracle.com/otn_software/linux/instantclient/2110000/instantclient-basic-linux.x64-21.10.0.0.0dbru.zip; \
+	wget https://download.oracle.com/otn_software/linux/instantclient/2110000/instantclient-sdk-linux.x64-21.10.0.0.0dbru.zip; \
+	unzip instantclient-basic-linux.x64-21.10.0.0.0dbru.zip; \
+	unzip instantclient-sdk-linux.x64-21.10.0.0.0dbru.zip; \
+	echo /opt/oracle/instantclient_21_10 > /etc/ld.so.conf.d/oracle-instantclient.conf; \
+	ln -s /opt/oracle/instantclient_21_10 /opt/oracle/instantclient; \
+	ldconfig; \
+	docker-php-ext-configure pdo_oci --with-pdo-oci=instantclient,/opt/oracle/instantclient; \
+	docker-php-ext-install pdo_oci; \
+	docker-php-ext-enable pdo_oci;
+
 WORKDIR /app
