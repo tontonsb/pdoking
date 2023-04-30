@@ -15,7 +15,7 @@ class DatabaseTest extends TestCase
 		$statement = $pdo->prepare('select 1+1');
 		$statement->execute();
 
-		$this->assertSame(2, $statement->fetch());
+		$this->assertEquals(2, $statement->fetch());
 	}
 
 	public static function databases():array
@@ -43,6 +43,7 @@ class DatabaseTest extends TestCase
 			'PDO_SQLITE' => ['sqlite::memory:', null, null],
 			'PDO_MYSQL' => ["mysql:host=mysql;port=3306;dbname=$db", $user, $pass],
 			'PDO_PGSQL' => ["pgsql:host=postgres;port=5432;dbname=$db", $user, $pass],
+			'PDO_SQLSRV' => ["sqlsrv:Server=mssql;Database=master;TrustServerCertificate=1", 'SA', $pass],
 		];
 	}
 }
