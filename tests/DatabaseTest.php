@@ -44,6 +44,7 @@ class DatabaseTest extends TestCase
 			'PDO_MYSQL' => ["mysql:host=mysql;port=3306;dbname=$db", $user, $pass],
 			'PDO_PGSQL' => ["pgsql:host=postgres;port=5432;dbname=$db", $user, $pass],
 			'PDO_SQLSRV' => ["sqlsrv:Server=mssql;Database=master;TrustServerCertificate=1", 'SA', $pass],
+			'PDO_DBLIB' => ["dblib:host=mssql;dbname=master", 'SA', $pass],
 		];
 	}
 }

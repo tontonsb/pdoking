@@ -28,4 +28,13 @@ RUN set -eux; \
 	docker-php-ext-enable pdo_sqlsrv; \
     apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*;
 
+# dblib
+RUN set -eux; \
+	apt-get update; \
+    apt-get -y --no-install-recommends install \
+		freetds-dev \
+		freetds-bin; \
+	docker-php-ext-install pdo_dblib; \
+	docker-php-ext-enable pdo_dblib
+
 WORKDIR /app
