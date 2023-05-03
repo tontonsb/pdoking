@@ -59,7 +59,7 @@ class DatabaseTest extends TestCase
 		 */
 
 		return [
-			// 'PDO_CUBRID' => ["dblib:host=mssql;dbname=master", 'SA', $pass],
+			// 'PDO_CUBRID' => ["cubrid:host=cubrid;dbname=$db", $user, $pass],
 			'PDO_DBLIB' => ["dblib:host=mssql;dbname=master", 'SA', $pass],
 			'PDO_FIREBIRD' => ["firebird:dbname=firebird/3050:/firebird/data/$db", $user, $pass],
 			// 'PDO_IBM' => ["dblib:host=mssql;dbname=master", 'SA', $pass],

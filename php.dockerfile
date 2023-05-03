@@ -71,4 +71,19 @@ RUN set -eux; \
 	docker-php-ext-install pdo_firebird; \
 	docker-php-ext-enable pdo_firebird;
 
+# cubrid
+# RUN set -eux; \
+# 	apt-get update; \
+#     apt-get -y --no-install-recommends install \
+# 		wget; \
+# 	cd /tmp; \
+# 	wget http://ftp.cubrid.org/CUBRID_Engine/11.2_latest/CUBRID-11.2-latest-Linux.x86_64.sh; \
+# 	chmod a+x CUBRID-11.2-latest-Linux.x86_64.sh; \
+# 	mkdir -p /opt/cubrid; \
+# 	# The script includes an interactive prompt
+# 	echo y | ./CUBRID-11.2-latest-Linux.x86_64.sh --skip-license --exclude-subdir --prefix=/opt/cubrid; \
+# 	rm /tmp/CUBRID-11.2-latest-Linux.x86_64.sh; \
+# 	pecl install --configureoptions 'with-pdo-cubrid=/opt/cubrid' pdo_cubrid; \
+# 	docker-php-ext-enable pdo_cubrid;
+
 WORKDIR /app

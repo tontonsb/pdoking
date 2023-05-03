@@ -13,6 +13,7 @@ services:
       - mssql
       - oracle
       - firebird
+    #  - cubrid
 
   mysql:
     image: mysql
@@ -48,3 +49,10 @@ services:
       FIREBIRD_DATABASE: '${DB_DATABASE}'
       FIREBIRD_USER: '${DB_USERNAME}'
       FIREBIRD_PASSWORD: '${DB_PASSWORD}'
+
+#  cubrid:
+#    image: cubrid/cubrid
+#    environment:
+#      CUBRID_DB: '${DB_DATABASE}'
+#      CUBRID_USER: '${DB_USERNAME}'
+#      CUBRID_PASSWORD: '${DB_PASSWORD}'
