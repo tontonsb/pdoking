@@ -63,4 +63,12 @@ RUN set -eux; \
 	docker-php-ext-install pdo_oci; \
 	docker-php-ext-enable pdo_oci;
 
+# firebird
+RUN set -eux; \
+	apt-get update; \
+    apt-get -y --no-install-recommends install \
+		firebird-dev; \
+	docker-php-ext-install pdo_firebird; \
+	docker-php-ext-enable pdo_firebird;
+
 WORKDIR /app

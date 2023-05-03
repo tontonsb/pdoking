@@ -14,9 +14,13 @@ class DatabaseTest extends TestCase
 
 		$sql = 'select 1+1';
 
-		// Oracle can't select without FROM, use the special table
+		// Oracle can't select without FROM, use their special table
 		if('oci' === $pdo->getAttribute(PDO::ATTR_DRIVER_NAME))
 			$sql .= ' from dual';
+
+		// Firebird can't select without FROM, use their special table
+		if('firebird' === $pdo->getAttribute(PDO::ATTR_DRIVER_NAME))
+			$sql .= ' from RDB$DATABASE';
 
 		$statement = $pdo->prepare($sql);
 		$statement->execute();
@@ -48,7 +52,7 @@ class DatabaseTest extends TestCase
 		return [
 			// 'PDO_CUBRID' => ["dblib:host=mssql;dbname=master", 'SA', $pass],
 			'PDO_DBLIB' => ["dblib:host=mssql;dbname=master", 'SA', $pass],
-			// 'PDO_FIREBIRD' => ["dblib:host=mssql;dbname=master", 'SA', $pass],
+			'PDO_FIREBIRD' => ["firebird:dbname=firebird/3050:/firebird/data/$db", $user, $pass],
 			// 'PDO_IBM' => ["dblib:host=mssql;dbname=master", 'SA', $pass],
 			// 'PDO_INFORMIX' => ["dblib:host=mssql;dbname=master", 'SA', $pass],
 			'PDO_MYSQL' => ["mysql:host=mysql;port=3306;dbname=$db", $user, $pass],

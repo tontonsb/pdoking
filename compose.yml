@@ -12,6 +12,7 @@ services:
       - postgres
       - mssql
       - oracle
+      - firebird
 
   mysql:
     image: mysql
@@ -40,3 +41,10 @@ services:
       ORACLE_RANDOM_PASSWORD: true
       APP_USER: '${DB_USERNAME}'
       APP_USER_PASSWORD: '${DB_PASSWORD}'
+
+  firebird:
+    image: jacobalberty/firebird
+    environment:
+      FIREBIRD_DATABASE: '${DB_DATABASE}'
+      FIREBIRD_USER: '${DB_USERNAME}'
+      FIREBIRD_PASSWORD: '${DB_PASSWORD}'
