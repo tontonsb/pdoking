@@ -11,21 +11,30 @@ class DatabaseTest extends TestCase
 		$pdo = new PDO($dsn, $username, $password, [
 			PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_COLUMN,
 		]);
+		$driverName = $pdo->getAttribute(PDO::ATTR_DRIVER_NAME);
 
-		$sql = 'select 1+1';
+		// Assure that we've actually used the correct prefix in the DSN
+		$this->assertStringContainsStringIgnoringCase($driverName, $this->dataName());
 
-		// Oracle can't select without FROM, use their special table
-		if('oci' === $pdo->getAttribute(PDO::ATTR_DRIVER_NAME))
-			$sql .= ' from dual';
-
-		// Firebird can't select without FROM, use their special table
-		if('firebird' === $pdo->getAttribute(PDO::ATTR_DRIVER_NAME))
-			$sql .= ' from RDB$DATABASE';
-
-		$statement = $pdo->prepare($sql);
+		$statement = $pdo->prepare($this->getSql($driverName));
 		$statement->execute();
 
 		$this->assertEquals(2, $statement->fetch());
+	}
+
+	protected function getSql(string $driverName): string
+	{
+		$sql = 'select 1 + 1';
+
+		// Oracle can't select without FROM, use their special dummy table
+		if('oci' === $driverName)
+			return $sql.' from dual';
+
+		// Firebird can't select without FROM, use their special dummy table
+		if('firebird' === $driverName)
+			return $sql.' from RDB$DATABASE';
+
+		return $sql;
 	}
 
 	public static function databases():array
