@@ -13,7 +13,6 @@ RUN set -eux; \
 	apt-get install -y \
 		libpq-dev; \
 	docker-php-ext-install pdo_pgsql; \
-	docker-php-ext-enable pdo_pgsql; \
 	apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*;
 
 # sqlsrv
@@ -35,14 +34,12 @@ RUN set -eux; \
 		freetds-dev \
 		freetds-bin; \
 	docker-php-ext-install pdo_dblib; \
-	docker-php-ext-enable pdo_dblib; \
 	apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*;
 
 # odbc, unixodbc and msodbcsql18 deps are already installed, driver is ready in /etc/odbcinst.ini
 RUN set -eux; \
 	docker-php-ext-configure pdo_odbc --with-pdo-odbc=unixODBC,/usr; \
-	docker-php-ext-install pdo_odbc; \
-	docker-php-ext-enable pdo_odbc;
+	docker-php-ext-install pdo_odbc;
 
 # odbc for MySQL
 RUN set -eux; \
@@ -73,7 +70,6 @@ RUN set -eux; \
 	ldconfig; \
 	docker-php-ext-configure pdo_oci --with-pdo-oci=instantclient,/opt/oracle/instantclient; \
 	docker-php-ext-install pdo_oci; \
-	docker-php-ext-enable pdo_oci; \
 	apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*;
 
 # firebird
@@ -82,7 +78,6 @@ RUN set -eux; \
 	apt-get -y --no-install-recommends install \
 		firebird-dev; \
 	docker-php-ext-install pdo_firebird; \
-	docker-php-ext-enable pdo_firebird; \
 	apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*;
 
 # cubrid
