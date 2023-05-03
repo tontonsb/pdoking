@@ -104,4 +104,7 @@ RUN set -eux; \
 #	docker-php-ext-install pdo_informix; \
 #	docker-php-ext-enable pdo_informix;
 
+# ibm
+# No progress on this one :)
+
 WORKDIR /app

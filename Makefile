@@ -8,10 +8,10 @@ MAKEFLAGS += --no-print-directory
 .PHONY: install test help
 
 install: ## Install backend dependencies.
-	@docker compose run php composer --no-interaction --optimize-autoloader install
+	@docker compose run --rm php composer --no-interaction --optimize-autoloader install
 
 test: ## Run tests.
-	@docker compose run php composer test
+	@docker compose run --rm php composer test
 
 build: ## reBuild image.
 	@docker compose build php
