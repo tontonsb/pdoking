@@ -14,24 +14,24 @@ RUN set -eux; \
 		libpq-dev; \
 	docker-php-ext-install pdo_pgsql; \
 	docker-php-ext-enable pdo_pgsql; \
-    apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*;
+	apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*;
 
 # sqlsrv
 RUN set -eux; \
 	apt-get update; \
-    apt-get -y --no-install-recommends install gnupg; \
+	apt-get -y --no-install-recommends install gnupg; \
 	curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -; \
-    curl https://packages.microsoft.com/config/debian/11/prod.list > /etc/apt/sources.list.d/mssql-release.list; \
-    apt-get update; \
-    ACCEPT_EULA=Y apt-get -y --no-install-recommends install msodbcsql18 odbcinst=2.3.7 odbcinst1debian2=2.3.7 unixodbc=2.3.7 unixodbc-dev=2.3.7; \
-    pecl install pdo_sqlsrv; \
+	curl https://packages.microsoft.com/config/debian/11/prod.list > /etc/apt/sources.list.d/mssql-release.list; \
+	apt-get update; \
+	ACCEPT_EULA=Y apt-get -y --no-install-recommends install msodbcsql18 odbcinst=2.3.7 odbcinst1debian2=2.3.7 unixodbc=2.3.7 unixodbc-dev=2.3.7; \
+	pecl install pdo_sqlsrv; \
 	docker-php-ext-enable pdo_sqlsrv; \
-    apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*;
+	apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*;
 
 # dblib
 RUN set -eux; \
 	apt-get update; \
-    apt-get -y --no-install-recommends install \
+	apt-get -y --no-install-recommends install \
 		freetds-dev \
 		freetds-bin; \
 	docker-php-ext-install pdo_dblib; \
@@ -46,7 +46,7 @@ RUN set -eux; \
 # oci
 RUN set -eux; \
 	apt-get update; \
-    apt-get -y --no-install-recommends install \
+	apt-get -y --no-install-recommends install \
 		wget \
 		unzip \
 		libaio1; \
@@ -66,7 +66,7 @@ RUN set -eux; \
 # firebird
 RUN set -eux; \
 	apt-get update; \
-    apt-get -y --no-install-recommends install \
+	apt-get -y --no-install-recommends install \
 		firebird-dev; \
 	docker-php-ext-install pdo_firebird; \
 	docker-php-ext-enable pdo_firebird;
@@ -74,7 +74,7 @@ RUN set -eux; \
 # cubrid
 # RUN set -eux; \
 # 	apt-get update; \
-#     apt-get -y --no-install-recommends install \
+# 	apt-get -y --no-install-recommends install \
 # 		wget; \
 # 	cd /tmp; \
 # 	wget http://ftp.cubrid.org/CUBRID_Engine/11.2_latest/CUBRID-11.2-latest-Linux.x86_64.sh; \

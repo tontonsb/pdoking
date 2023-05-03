@@ -1,4 +1,5 @@
-Attempt to try out all PHP's PDO drivers with dockerized databases.
+Attempt to try out all PHP's [PDO drivers](https://www.php.net/manual/en/pdo.drivers.php)
+with dockerized databases.
 
 The drivers in [core codebase](https://github.com/php/php-src/tree/master/ext)
 work. Some of the others don't. For now.
