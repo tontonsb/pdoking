@@ -63,7 +63,7 @@ class DatabaseTest extends TestCase
 			'PDO_DBLIB' => ["dblib:host=mssql;dbname=master", 'SA', $pass],
 			'PDO_FIREBIRD' => ["firebird:dbname=firebird/3050:/firebird/data/$db", $user, $pass],
 			// 'PDO_IBM' => ["dblib:host=mssql;dbname=master", 'SA', $pass],
-			// 'PDO_INFORMIX' => ["dblib:host=mssql;dbname=master", 'SA', $pass],
+			// 'PDO_INFORMIX' => ["informix:host=informix; service=9088; database=sysmaster; server=informix; protocol=onsoctcp", 'informix', 'in4mix'],
 			'PDO_MYSQL' => ["mysql:host=mysql;port=3306;dbname=$db", $user, $pass],
 			'PDO_OCI' => [
 				"oci:dbname=(DESCRIPTION =

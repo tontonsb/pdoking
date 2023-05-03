@@ -86,4 +86,12 @@ RUN set -eux; \
 # 	pecl install --configureoptions 'with-pdo-cubrid=/opt/cubrid' pdo_cubrid; \
 # 	docker-php-ext-enable pdo_cubrid;
 
+# informix
+# Get informix SDK and put it in /informix
+# https://www.ibm.com/resources/mrs/assets/DownloadList?source=ifxdl&lang=en_US
+# RUN set -eux; \
+#	docker-php-ext-configure pdo_informix --with-pdo-informix=/app/informix; \
+#	docker-php-ext-install pdo_informix; \
+#	docker-php-ext-enable pdo_informix;
+
 WORKDIR /app

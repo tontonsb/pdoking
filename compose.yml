@@ -14,6 +14,7 @@ services:
       - oracle
       - firebird
     #  - cubrid
+    #  - informix
 
   mysql:
     image: mysql
@@ -56,3 +57,8 @@ services:
 #      CUBRID_DB: '${DB_DATABASE}'
 #      CUBRID_USER: '${DB_USERNAME}'
 #      CUBRID_PASSWORD: '${DB_PASSWORD}'
+
+#  informix:
+#    image: ibmcom/informix-developer-database
+#    environment:
+#      LICENSE: accept
