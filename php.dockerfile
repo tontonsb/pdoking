@@ -43,6 +43,16 @@ RUN set -eux; \
 	docker-php-ext-install pdo_odbc; \
 	docker-php-ext-enable pdo_odbc;
 
+# odbc for MySQL
+RUN set -eux; \
+	apt-get update; \
+	apt-get install -y \
+		wget; \
+	wget https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-community-client-plugins_8.0.33-1debian11_amd64.deb; \
+	wget https://dev.mysql.com/get/Downloads/Connector-ODBC/8.0/mysql-connector-odbc_8.0.33-1debian11_amd64.deb; \
+	dpkg -i mysql-community-client-plugins_8.0.33-1debian11_amd64.deb; \
+	dpkg -i mysql-connector-odbc_8.0.33-1debian11_amd64.deb;
+
 # oci
 RUN set -eux; \
 	apt-get update; \

@@ -4,7 +4,7 @@ with dockerized databases.
 The drivers in [core codebase](https://github.com/php/php-src/tree/master/ext)
 work. Some of the others don't. For now.
 
-| Driver       | Supported DBs         | Chosen DB     | Notes |
+| Driver       | Supported DBs         | Tested DBs    | Notes |
 |--------------|-----------------------|---------------|-------|
 | PDO_CUBRID   | Cubrid                |               | [Appears abandoned since 2017](https://pecl.php.net/package/pdo_cubrid) |
 | PDO_DBLIB    | Any FreeTDS-supported | MS SQL Server | |
@@ -13,7 +13,7 @@ work. Some of the others don't. For now.
 | PDO_INFORMIX | Informix              |               | [Not updated for PHP8.2](https://pecl.php.net/package/pdo_informix) |
 | PDO_MYSQL    | MySQL, MariaDB        | MySQL         | |
 | PDO_OCI      | Oracle                | Oracle        | |
-| PDO_ODBC     | Any ODBCv3-supported  | MS SQL Server | |
+| PDO_ODBC     | Any ODBCv3-supported  | MS SQL Server, MySQL | |
 | PDO_PGSQL    | PostgreSQL            | PostgreSQL    | |
 | PDO_SQLITE   | SQLite 2, SQLite 3    | SQLite 3      | |
 | PDO_SQLSRV   | MS SQL Server         | MS SQL Server | |

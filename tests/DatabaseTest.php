@@ -71,7 +71,8 @@ class DatabaseTest extends TestCase
 					(ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = oracle)(PORT = 1521)))
 					(CONNECT_DATA = (SERVICE_NAME = XEPDB1)))
 				", $user, $pass],
-			'PDO_ODBC' => ["odbc:Driver=ODBC Driver 18 for SQL Server;Server=mssql;TrustServerCertificate=YES", 'SA', $pass],
+			'PDO_ODBC-MSSQL' => ["odbc:Driver=ODBC Driver 18 for SQL Server;Server=mssql;TrustServerCertificate=YES", 'SA', $pass],
+			'PDO_ODBC-MYSQL' => ["odbc:driver=MySQL ODBC 8.0 Unicode Driver;server=mysql;database=$db", $user, $pass],
 			'PDO_PGSQL' => ["pgsql:host=postgres;port=5432;dbname=$db", $user, $pass],
 			'PDO_SQLITE' => ['sqlite::memory:', null, null],
 			'PDO_SQLSRV' => ["sqlsrv:Server=mssql;Database=master;TrustServerCertificate=1", 'SA', $pass],
