@@ -61,7 +61,8 @@ class DatabaseTest extends TestCase
 
 		return [
 			// 'PDO_CUBRID' => ["cubrid:host=cubrid;dbname=$db", $user, $pass],
-			'PDO_DBLIB' => ["dblib:host=mssql;dbname=master", 'SA', $pass],
+			'PDO_DBLIB-MSSQL' => ["dblib:host=mssql;dbname=master", 'SA', $pass],
+			'PDO_DBLIB-SYBASE' => ["dblib:host=sybase:2638;dbname=demo", 'dba', 'sql'],
 			'PDO_FIREBIRD' => ["firebird:dbname=firebird/3050:/firebird/data/$db", $user, $pass],
 			// 'PDO_IBM' => ["dblib:host=mssql;dbname=master", 'SA', $pass],
 			// 'PDO_INFORMIX' => ["informix:host=informix; service=9088; database=sysmaster; server=informix; protocol=onsoctcp", 'informix', 'in4mix'],

@@ -7,7 +7,7 @@ work. Some of the others don't. For now.
 | Driver       | Supported DBs         | Tested DBs    | Notes |
 |--------------|-----------------------|---------------|-------|
 | PDO_CUBRID   | Cubrid                |               | [Appears abandoned since 2017](https://pecl.php.net/package/pdo_cubrid) |
-| PDO_DBLIB    | Any FreeTDS-supported | MS SQL Server | |
+| PDO_DBLIB    | Any FreeTDS-supported | MS SQL Server, Sybase | |
 | PDO_FIREBIRD | Firebird              | Firebird      | |
 | PDO_IBM      | IBM DB2               |               | [Not updated for PHP8.2](https://pecl.php.net/package/pdo_ibm) |
 | PDO_INFORMIX | Informix              |               | [Not updated for PHP8.2](https://pecl.php.net/package/pdo_informix) |

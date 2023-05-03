@@ -13,6 +13,7 @@ services:
       - mssql
       - oracle
       - firebird
+      - sybase
     #  - cubrid
     #  - informix
 
@@ -50,6 +51,13 @@ services:
       FIREBIRD_DATABASE: '${DB_DATABASE}'
       FIREBIRD_USER: '${DB_USERNAME}'
       FIREBIRD_PASSWORD: '${DB_PASSWORD}'
+
+  sybase:
+    image: jaschweder/sybase
+    environment:
+      SYBASE_DB: '${DB_DATABASE}'
+      SYBASE_USER: '${DB_USERNAME}'
+      SYBASE_PASSWORD: '${DB_PASSWORD}'
 
 #  cubrid:
 #    image: cubrid/cubrid
