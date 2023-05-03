@@ -4,10 +4,10 @@ FROM php:8.2-cli
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
 # Install DB Drivers
-# mysql
+# PDO_MYSQL
 RUN docker-php-ext-install pdo_mysql && docker-php-ext-enable pdo_mysql
 
-# pgsql
+# PDO_PGSQL
 RUN set -eux; \
 	apt-get update; \
 	apt-get install -y \
@@ -15,10 +15,12 @@ RUN set -eux; \
 	docker-php-ext-install pdo_pgsql; \
 	apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*;
 
-# sqlsrv
+# PDO_SQLSRV
+# This also sets up ODBC support for MSSQL
 RUN set -eux; \
 	apt-get update; \
-	apt-get -y --no-install-recommends install gnupg; \
+	apt-get -y --no-install-recommends install \
+		gnupg; \
 	curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -; \
 	curl https://packages.microsoft.com/config/debian/11/prod.list > /etc/apt/sources.list.d/mssql-release.list; \
 	apt-get update; \
@@ -27,7 +29,7 @@ RUN set -eux; \
 	docker-php-ext-enable pdo_sqlsrv; \
 	apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*;
 
-# dblib
+# PDO_DBLIB
 RUN set -eux; \
 	apt-get update; \
 	apt-get -y --no-install-recommends install \
@@ -36,12 +38,14 @@ RUN set -eux; \
 	docker-php-ext-install pdo_dblib; \
 	apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*;
 
-# odbc, unixodbc and msodbcsql18 deps are already installed, driver is ready in /etc/odbcinst.ini
+# PDO_ODBC
+# unixodbc-dev is already installed above — see PDO_SQLSRV setup
+# If using PDO_ODBC with MySQL, just do `apt-get install unixodbc-dev`
 RUN set -eux; \
 	docker-php-ext-configure pdo_odbc --with-pdo-odbc=unixODBC,/usr; \
 	docker-php-ext-install pdo_odbc;
 
-# odbc for MySQL
+# odbc connector for MySQL (needed if using MySQL via PDO_ODBC)
 RUN set -eux; \
 	apt-get update; \
 	apt-get install -y \
@@ -52,7 +56,7 @@ RUN set -eux; \
 	dpkg -i mysql-connector-odbc_8.0.33-1debian11_amd64.deb; \
 	apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*;
 
-# oci
+# PDO_OCI
 RUN set -eux; \
 	apt-get update; \
 	apt-get -y --no-install-recommends install \
@@ -72,7 +76,7 @@ RUN set -eux; \
 	docker-php-ext-install pdo_oci; \
 	apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*;
 
-# firebird
+# PDO_FIREBIRD
 RUN set -eux; \
 	apt-get update; \
 	apt-get -y --no-install-recommends install \
@@ -80,7 +84,7 @@ RUN set -eux; \
 	docker-php-ext-install pdo_firebird; \
 	apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*;
 
-# cubrid
+# PDO_CUBRID
 # RUN set -eux; \
 # 	apt-get update; \
 # 	apt-get -y --no-install-recommends install \
@@ -95,7 +99,7 @@ RUN set -eux; \
 # 	pecl install --configureoptions 'with-pdo-cubrid=/opt/cubrid' pdo_cubrid; \
 # 	docker-php-ext-enable pdo_cubrid;
 
-# informix
+# PDO_INFORMIX
 # Get informix SDK and put it in /informix
 # https://www.ibm.com/resources/mrs/assets/DownloadList?source=ifxdl&lang=en_US
 # RUN set -eux; \
@@ -103,7 +107,7 @@ RUN set -eux; \
 #	docker-php-ext-install pdo_informix; \
 #	docker-php-ext-enable pdo_informix;
 
-# ibm
+# PDO_IBM
 # No progress on this one :)
 
 WORKDIR /app
