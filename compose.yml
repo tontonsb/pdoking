@@ -11,6 +11,7 @@ services:
       - mysql
       - postgres
       - mssql
+      - azure
       - oracle
       - firebird
       - sybase
@@ -34,6 +35,12 @@ services:
 
   mssql:
     image: mcr.microsoft.com/mssql/server
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: '${DB_PASSWORD}'
+
+  azure:
+    image: mcr.microsoft.com/azure-sql-edge
     environment:
       ACCEPT_EULA: Y
       MSSQL_SA_PASSWORD: '${DB_PASSWORD}'

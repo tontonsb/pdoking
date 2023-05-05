@@ -62,6 +62,7 @@ class DatabaseTest extends TestCase
 		return [
 			// 'PDO_CUBRID' => ["cubrid:host=cubrid;dbname=$db", $user, $pass],
 			'PDO_DBLIB-MSSQL' => ["dblib:host=mssql;dbname=master", 'SA', $pass],
+			'PDO_DBLIB-AZURE' => ["dblib:host=azure;dbname=master", 'SA', $pass],
 			'PDO_DBLIB-SYBASE' => ["dblib:host=sybase:2638;dbname=demo", 'dba', 'sql'],
 			'PDO_FIREBIRD' => ["firebird:dbname=firebird/3050:/firebird/data/$db", $user, $pass],
 			// 'PDO_IBM' => ["ibm:DRIVER={IBM DB2 ODBC DRIVER};DATABASE=$db;HOSTNAME=db2;PORT=50000;PROTOCOL=TCPIP;", $user, $pass],
@@ -73,10 +74,12 @@ class DatabaseTest extends TestCase
 					(CONNECT_DATA = (SERVICE_NAME = XEPDB1)))
 				", $user, $pass],
 			'PDO_ODBC-MSSQL' => ["odbc:Driver=ODBC Driver 18 for SQL Server;Server=mssql;TrustServerCertificate=YES", 'SA', $pass],
+			'PDO_ODBC-AZURE' => ["odbc:Driver=ODBC Driver 18 for SQL Server;Server=azure;TrustServerCertificate=YES", 'SA', $pass],
 			'PDO_ODBC-MYSQL' => ["odbc:driver=MySQL ODBC 8.0 Unicode Driver;server=mysql;database=$db", $user, $pass],
 			'PDO_PGSQL' => ["pgsql:host=postgres;port=5432;dbname=$db", $user, $pass],
 			'PDO_SQLITE' => ['sqlite::memory:', null, null],
-			'PDO_SQLSRV' => ["sqlsrv:Server=mssql;Database=master;TrustServerCertificate=1", 'SA', $pass],
+			'PDO_SQLSRV-MSSQL' => ["sqlsrv:Server=mssql;Database=master;TrustServerCertificate=1", 'SA', $pass],
+			'PDO_SQLSRV-AZURE' => ["sqlsrv:Server=azure;Database=master;TrustServerCertificate=1", 'SA', $pass],
 		];
 	}
 }
