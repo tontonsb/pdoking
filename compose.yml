@@ -36,7 +36,7 @@ services:
     image: mcr.microsoft.com/mssql/server
     environment:
       ACCEPT_EULA: Y
-      SA_PASSWORD: '${DB_PASSWORD}'
+      MSSQL_SA_PASSWORD: '${DB_PASSWORD}'
 
   oracle:
     image: gvenzl/oracle-xe
