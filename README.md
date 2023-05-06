@@ -18,6 +18,14 @@ work. Some of the others don't. For now.
 | PDO_SQLITE   | SQLite 2, SQLite 3    | SQLite 3      | |
 | PDO_SQLSRV   | MS SQL Server         | MS SQL Server, Azure SQL | |
 
+### TODO
+
+- Test PDO_MYSQL and PDO_ODBC on MariaDB
+- Test PDO_OCI on [Oracle Database Free](https://www.oracle.com/database/free/) — [gvenzl/oracle-free](https://hub.docker.com/r/gvenzl/oracle-free)
+- Test PDO_ODBC on MongoDB? :D
+- Make IBM PDOs work and test them, see [PDO_INFORMIX](https://github.com/php/pecl-database-pdo_informix) and [PDO_IBM](https://github.com/php/pecl-database-pdo_ibm) on GitHub
+- Can PDO_CUBRID be compiled and made to work somehow?
+
 ## Usage
 
 ```sh
