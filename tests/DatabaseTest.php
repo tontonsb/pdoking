@@ -27,6 +27,7 @@ class DatabaseTest extends TestCase
 		$sql = 'select 1 + 1';
 
 		// Oracle can't select without FROM, use their special dummy table
+		// But it should be fixed in Oracle 23c, try gvenzl/oracle-free image
 		if('oci' === $driverName)
 			return $sql.' from dual';
 
